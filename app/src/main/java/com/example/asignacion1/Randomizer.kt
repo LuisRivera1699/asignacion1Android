@@ -8,7 +8,7 @@ class Randomizer {
     private fun shuffle(intarr : IntArray) : IntArray{
 
         var arraux : IntArray = intarr.copyOf()
-        var rnd = Random(123)
+        var rnd = Random
 
         for ( i in arraux.size-1 downTo 1){
             val j = rnd.nextInt(i+1)
