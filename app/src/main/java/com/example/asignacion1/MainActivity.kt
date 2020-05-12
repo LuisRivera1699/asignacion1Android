@@ -2,6 +2,7 @@ package com.example.asignacion1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
@@ -98,10 +99,20 @@ class MainActivity : AppCompatActivity() {
                 if (!won){
                     // Get button index
                     val buttonIndex = buttons!!.indexOf(i)
+
                     // Set button text to emoji by processing the unicode value
                     i.text = String(Character.toChars(couplesArray!![buttonIndex]))
+
+                    // Applying a delay of 500 ms before setting and verifying the match, so user
+                    // can see the wrong second card if it fails on the match.
+                    Handler().postDelayed({
+                        // Set the current couple element
+                        setCurrentCoupleElement(i)
+                    }, 500)
+
+                    //i.text = String(Character.toChars(couplesArray!![buttonIndex]))
                     // Set the current couple element
-                    setCurrentCoupleElement(i)
+                    //setCurrentCoupleElement(i)
                 }
                 // If won, when clicked, the activity will be recreated
                 else{
@@ -109,6 +120,7 @@ class MainActivity : AppCompatActivity() {
                     this.recreate()
                 }
             }
+
         }
 
     }
